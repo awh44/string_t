@@ -28,6 +28,9 @@ int main(int argc, char *argv[])
 	print_string(split);
 	printf("%zu\n", split[0].elements);
 
+	char *cstr = string_c_str(&s);
+	printf("%s\n", cstr);
+
 	string_uninitialize(&s);	
 	for (i = 0; i < num; i++)
 	{

@@ -10,4 +10,5 @@ void string_assign_from_char_array(string_t *s, char *arr);
 void string_assign_from_char_array_with_size(string_t *s, char *arr, size_t length);
 void string_concatenate(string_t *a, string_t *b);
 string_t *string_split(string_t *s, char delim, size_t *num);
+char *string_c_str(string_t *s);
 #endif

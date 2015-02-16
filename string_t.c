@@ -57,3 +57,10 @@ string_t *string_split(string_t *s, char delim, size_t *num)
 
 	return ret_val;
 }
+
+char *string_c_str(string_t *s)
+{
+	char_vector_size_at_least(s, s->elements + 1);
+	s->array[s->elements + 1] = '\0';
+	return s->array;
+}
