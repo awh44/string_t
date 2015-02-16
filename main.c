@@ -31,6 +31,9 @@ int main(int argc, char *argv[])
 	char *cstr = string_c_str(&s);
 	printf("%s\n", cstr);
 
+	string_getline(&s, stdin);
+	print_string(&s);
+
 	string_uninitialize(&s);	
 	for (i = 0; i < num; i++)
 	{

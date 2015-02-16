@@ -64,3 +64,14 @@ char *string_c_str(string_t *s)
 	s->array[s->elements + 1] = '\0';
 	return s->array;
 }
+
+void string_getline(string_t *s, FILE *stream)
+{
+	char_vector_clear(s);
+	char next_char = fgetc(stream);
+	while (next_char != '\n')
+	{
+		char_vector_push_back(s, next_char);
+		next_char = fgetc(stream);
+	}
+}
