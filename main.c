@@ -17,11 +17,13 @@ int main(int argc, char *argv[])
 
 	size_t num;
 	string_t *split = string_split(&s, ' ', &num);
+	char **c_str_split = string_split_as_c_strs(&s, ' ', &num);
 	printf("%zu\n", num);
 	size_t i;
 	for (i = 0; i < num; i++)
 	{
 		print_string(split + i);
+		printf("%s\n", c_str_split[i]);
 	}
 
 	string_concatenate(split, split + 1);

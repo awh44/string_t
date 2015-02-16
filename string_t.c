@@ -58,6 +58,34 @@ string_t *string_split(string_t *s, char delim, size_t *num)
 	return ret_val;
 }
 
+char **string_split_as_c_strs(string_t *s, char delim, size_t *num)
+{
+	char **ret_val = NULL;
+	*num = 0;
+	char *start_pos = s->array;
+	size_t i;
+	for (i = 0; i < s->elements; i++)
+	{
+		if (s->array[i] == delim)
+		{
+			(*num)++;
+			ret_val = realloc(ret_val, *num * sizeof *ret_val);
+			
+			s->array[i] = '\0';
+			ret_val[*num - 1] = strdup(start_pos);
+
+			s->array[i] = delim;
+			start_pos = s->array + i + 1;
+		}
+	}
+
+	(*num)++;
+	ret_val = realloc(ret_val, *num * sizeof *ret_val);
+	ret_val[*num - 1] = strndup(start_pos, s->array + i - start_pos);
+
+	return ret_val;
+}
+
 char *string_c_str(string_t *s)
 {
 	char_vector_size_at_least(s, s->elements + 1);
