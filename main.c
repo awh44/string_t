@@ -36,12 +36,17 @@ int main(int argc, char *argv[])
 	string_getline(&s, stdin);
 	print_string(&s);
 
+	string_concatenate_char_array(&s, " blahblah yes!");
+	print_string(&s);
+
 	string_uninitialize(&s);	
 	for (i = 0; i < num; i++)
 	{
 		string_uninitialize(split + i);
 	}
 	free(split);
+
+	printf("Done test.\n");
 
 	return 0;
 }

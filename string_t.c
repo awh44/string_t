@@ -28,6 +28,16 @@ void string_concatenate(string_t *a, string_t *b)
 	a->elements += b->elements;
 }
 
+void string_concatenate_char_array(string_t *s, char *arr)
+{
+	char *c = arr;
+	while (*c)
+	{
+		char_vector_push_back(s, *c);
+		c++;
+	}
+}
+
 string_t *string_split(string_t *s, char delim, size_t *num)
 {
 	string_t *ret_val = NULL;
@@ -89,7 +99,7 @@ char **string_split_as_c_strs(string_t *s, char delim, size_t *num)
 char *string_c_str(string_t *s)
 {
 	char_vector_size_at_least(s, s->elements + 1);
-	s->array[s->elements + 1] = '\0';
+	s->array[s->elements] = '\0';
 	return s->array;
 }
 
