@@ -37,12 +37,13 @@ int main(int argc, char *argv[])
 	string_concatenate_char_array(s, " blahblah yes!");
 	print_string(s);
 
-
 	for (i = 0; i < num; i++)
 	{
 		string_uninitialize(split[i]);
+		free(c_str_split[i]);
 	}
 	free(split);
+	free(c_str_split);
 
 	printf("Done test.\n");
 
